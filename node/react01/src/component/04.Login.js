@@ -5,8 +5,10 @@ import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const idRef = useRef()
-    const pwRef = useRef()
+    
+    let idRef = useRef()
+    let pwRef = useRef()
+
     const navigate = useNavigate()
 
     const handleLogin = (e) => {

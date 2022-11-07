@@ -11,7 +11,7 @@ let conn = mysql.createConnection({
     user: 'cshuser',
     password: 'cshpass',
     port: '3306',
-    database: 'nodejs'
+    database: 'nodejs_db'
 })
 
 
@@ -40,7 +40,7 @@ router.post('/setData', function (req, res) {
 
 
 router.post('/logindata', function (req, res) {
-    let sql = 'select * from nodejs_member where id =? and pw = ?'
+    let sql = 'select * from member where id =? and pw = ?'
     conn.query(sql, [req.body.id, req.body.pw], function (err, rows) {
         console.log(rows[0])
 
@@ -63,7 +63,7 @@ router.post('/logindata', function (req, res) {
 
 router.post('/joindata', function (req, res) {
     console.log(req.body.id)
-    let sql = "insert into nodejs_member values (?,?,?)";
+    let sql = "insert into member values (?,?,?)";
     conn.query(sql, [req.body.id, req.body.pw, req.body.name], function (err, rows) {
         if (rows) {
             console.log('회원가입 성공!')
