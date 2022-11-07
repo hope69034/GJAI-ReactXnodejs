@@ -27,6 +27,8 @@ router.get('/getData', function (req, res) {
     })
 })
 
+
+
 //datapush   리액트 > 노드로 전송
 router.post('/setData', function (req, res) {
     // 값 받아오기
@@ -36,16 +38,6 @@ router.post('/setData', function (req, res) {
 
 
 
-router.post('/joindata', function (req, res) {
-    console.log(req.body.id)
-    let sql = "insert into nodejs_member values (?,?,?)";
-    conn.query(sql, [req.body.id, req.body.pw, req.body.name], function (err, rows) {
-        if (rows) {
-            console.log('회원가입 성공!')
-            res.end()
-        }
-    })
-})
 
 router.post('/logindata', function (req, res) {
     let sql = 'select * from nodejs_member where id =? and pw = ?'
@@ -66,6 +58,21 @@ router.post('/logindata', function (req, res) {
         res.end()
     })
 })
+
+
+
+router.post('/joindata', function (req, res) {
+    console.log(req.body.id)
+    let sql = "insert into nodejs_member values (?,?,?)";
+    conn.query(sql, [req.body.id, req.body.pw, req.body.name], function (err, rows) {
+        if (rows) {
+            console.log('회원가입 성공!')
+            res.end()
+        }
+    })
+})
+
+
 
 router.get('*', function (req, res) {
     console.log('main')
